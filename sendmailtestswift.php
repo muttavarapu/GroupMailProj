@@ -115,4 +115,11 @@ if (is_int($address)) {
 $insert=implode(",",$insert);
 echo $insert;
 echo "tis runs!";
-?>
+?><html>
+<head><title>
+sendmail test
+</title></head>
+
+<body>
+<p>Hello this works</p><h1><?php echo "this runs!";?></h1></body>
+</html>
