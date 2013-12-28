@@ -1,4 +1,4 @@
-<?php
+<?php/*
 // using Swift mailer to send mail
 // include lib folder from swiftmail package inside the project
 
@@ -33,7 +33,7 @@ if (!$mailer->send($message, $failures))
 {
   echo "Failures:";
   print_r($failures);
-}*/
+}
  
  $replyto="dfsdf@hggh.com";
  $doc_name="Doc Puk";
@@ -110,7 +110,7 @@ if (is_int($address)) {
 }
 $insert=implode(",",$insert);
 echo $insert;
-echo "tis runs!";
+echo "tis runs!";*/
 ?><html>
 <head><title>
 sendmail test
