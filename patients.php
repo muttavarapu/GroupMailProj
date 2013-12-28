@@ -6,8 +6,8 @@ exit();}?><?php
 
 
  //grab the patient data from api
- $json = file_get_contents('http://localhost/Practo/patients.js');
- //$json = file_get_contents('https://patients.apiary.io/patients');
+ //$json = file_get_contents('http://localhost/Practo/patients.js');
+ $json = file_get_contents('https://patients.apiary.io/patients');
 //the returned json data is in string format
 
 
