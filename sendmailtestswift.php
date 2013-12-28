@@ -1,10 +1,14 @@
-<?php/*
+<?php
 // using Swift mailer to send mail
 // include lib folder from swiftmail package inside the project
 
 //mail server configuration
 //for this we are using gmail SMTP server
-
+ini_set("SMTP","ssl://smtp.gmail.com");
+ini_set("smtp_port","465");
+//sending email from gmail reqires ssl.So we enable openssl 
+//also make sure you enabled ssl_module in apache server
+ini_set("extension","php_openssl.dll");
 // include swift mail
 require_once 'lib/swift_required.php';
 // Create the Transport
@@ -33,7 +37,7 @@ if (!$mailer->send($message, $failures))
 {
   echo "Failures:";
   print_r($failures);
-}
+}*/
  
  $replyto="dfsdf@hggh.com";
  $doc_name="Doc Puk";
@@ -110,7 +114,7 @@ if (is_int($address)) {
 }
 $insert=implode(",",$insert);
 echo $insert;
-echo "tis runs!";*/
+echo "tis runs!";
 ?><html>
 <head><title>
 sendmail test
