@@ -1,2 +1,2 @@
-<?php $connection=mysql_connect("localhost","root","Hiccup_91") or die("cannot connect to my sql server");
-mysql_select_db("practo") or die("cannot connect to my sql server");?>
+<?php $connection=mysql_connect("b13013ns7636sg5v.mysql.clvrcld.net","uhruoelhd77j0pf7","2c6c28c236794a56ae72ecf4e1128ba1") or die("cannot connect to my sql server");
+mysql_select_db("b13013ns7636sg5v") or die("cannot connect to my sql server");?>
