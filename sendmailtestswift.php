@@ -4,11 +4,7 @@
 
 //mail server configuration
 //for this we are using gmail SMTP server
-ini_set("SMTP","ssl://smtp.gmail.com");
-ini_set("smtp_port","465");
-//sending email from gmail reqires ssl.So we enable openssl 
-//also make sure you enabled ssl_module in apache server
-ini_set("extension","php_openssl.dll");
+
 // include swift mail
 require_once 'lib/swift_required.php';
 // Create the Transport
