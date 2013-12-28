@@ -6,6 +6,7 @@
 //for this we are using gmail SMTP server
 ini_set("SMTP","ssl://smtp.gmail.com");
 ini_set("smtp_port","465");
+ini_set("error_reporting","E_ALL");
 //sending email from gmail reqires ssl.So we enable openssl 
 //also make sure you enabled ssl_module in apache server
 ini_set("extension","php_openssl.dll");
