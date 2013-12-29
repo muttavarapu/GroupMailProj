@@ -53,14 +53,16 @@ div.fot{background-color:black;z-index:10;color:white;padding-left:350px;padding
   }
   .error{background-color:red;padding:3px;}
   .warning{background-color:orange;padding:3px;}
-  div.msg{  font-size:.7em;margin:10px;overflow:hidden;
+  div.msg{  font-size:.7em;overflow:hidden;border-radius:5px;
   font-weight: 300;
-  width:950px;height:auto; padding:25px;background-color:#94B39D;margin:10px 35px 10px 35px;}
+  width:945px;height:auto; padding:25px;background-color:#BFD8BB;margin:10px 35px 10px 27px;}
   .msg h2.subj{float:left;color:#131718;padding:0px;font-size:1.5em;}
   .msg h2.date{float:right;color:#101010; font-weight: 300;}
   .msg p.msgBody{clear:both;color:#29322C;margin-top:-60px;}
+  .msg h3{font-size:2.0em;padding:4px;background-color:#97CAAB;border-radius:5px;margin-top:20px;
+  font-weight: 300;}
   form{padding:15px;}
-  #msgSubmit{width:300px;font-size:1.0em;padding:7px;background-color:#208BB2;border-radius:5px;margin:0px 0px 0px 30px;}
+  #msgSubmit{width:200px;font-size:1.0em;padding:7px;background-color:#208BB2;border-radius:5px;margin:0px 0px 0px 30px;border:0px;}
   .dbody{padding-bottom:30px;}
  div.doctor a{text-decoration:none;color:black;}
  .selPatients{background-color:#208BB2; padding:10px;width:auto;height:40px;margin:10px;}
