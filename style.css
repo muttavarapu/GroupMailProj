@@ -64,7 +64,11 @@ div.fot{background-color:black;z-index:10;color:white;padding-left:350px;padding
   form{padding:15px;}
   #msgSubmit{width:200px;font-size:1.0em;padding:7px;background-color:#208BB2;border-radius:5px;margin:0px 0px 0px 30px;border:0px;}
   .dbody{padding-bottom:30px;}
+  div.doctor{width:910px;height:100px; padding:15px;background-color:#506E76;margin:10px 25px 10px 25px;overflow:hidden;float:left;}
  div.doctor a{text-decoration:none;color:black;}
+ .doctor p{margin-top:-10px;}
  .selPatients{background-color:#208BB2; padding:10px;width:auto;height:40px;margin:10px;}
   .patient input,.selPatients input {float:left;margin:13px 1px 13px 1px;}
+  .read{
+ color:red;}
 

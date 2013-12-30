@@ -9,8 +9,10 @@ $query=mysql_query("SELECT id,subject, LEFT(message, 145) AS body,sent_on,recipi
 
 $output= "<p class='msg'>You havet sent any messages</p>";
 while($row=mysql_fetch_array($query)){
-
-$output= "<div class='msg'><h2 class='subj'>Subj: ".$row['subject']."</h2><h2 class='date'>Sent On : ".$row['sent_on']."</h2><div class='clear'></div><p>".$row['body']."...<a href='viewMessage.php?id=".$row['id']."'>View Message</a></p><h3>Recipients: ".$row['recipients']."</h3></div>";
+$readmore=$row['body'];
+$lastspace=strrpos($readmore," ");
+$read=substr($readmore,0,$lastspace);
+$output= "<div class='msg'><h2 class='subj'>Subj: ".$row['subject']."</h2><h2 class='date'>Sent On : ".$row['sent_on']."</h2><div class='clear'></div><p>".$read."...<a href='viewMessage.php?id=".$row['id']."'>View Message</a></p><h3>Recipients: ".$row['recipients']."</h3></div>";
 }
 
 

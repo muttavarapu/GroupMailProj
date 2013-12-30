@@ -45,6 +45,7 @@ include('includes/head.php');
 <input type="password" name="pass" placeholder="Password"/></br>
 <input type="checkbox" name="remember" value="yes" checked="checked" placeholder="remember"/>Remember</br>
 <input type="submit" value="Login!"/>
+<a href="">Forgot Password</a>
 
 </form>
 </div>
