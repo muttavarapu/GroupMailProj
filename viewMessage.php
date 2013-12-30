@@ -150,10 +150,14 @@ if(count($failedRecipients) > 0)
 
 			
 if(isset($_GET['msg'])){$msg[]=$_GET['msg'];}
+
+
 //check if logged in
 if($session_id){
 //if message sending is a sucess display that message
 if(isset($msg_id)){$id=$msg_id;}
+
+//displaying requested message message
 //to show a specific message as per uri
 elseif(isset($_GET['id'])){$id=$_GET['id'];}
 else{

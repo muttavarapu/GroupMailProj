@@ -27,5 +27,5 @@ $read=substr($readmore,0,$lastspace);
 
 
 
-
+<?php include('includes/foter.php');?>
 </body></html>

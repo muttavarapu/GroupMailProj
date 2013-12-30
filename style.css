@@ -44,7 +44,7 @@ ul#nav li{padding:10px;margin:-20px 25px 0px 0px;}
 ul#sub{display:none;position:absolute;top:60px;left:0px;z-index:10;border-top:3px solid black;}
 ul#nav li:hover ul{display:block;}
 ul#sub li{width:150px;}
-div.fot{background-color:black;z-index:10;color:white;padding-left:350px;padding-right:100px;width:930px;margin:500px 0px -20px -20px;}
+div.fot{background-color:black;z-index:10;color:white;padding-left:350px;padding-right:100px;width:930px;margin:170px 0px -20px -20px;}
 .fot p{padding:50px;} 
  .patient{width:410px;height:100px; padding:15px;background-color:#506E76;margin:10px 25px 10px 25px;overflow:hidden;float:left;}
  .patient p,h3{
@@ -64,11 +64,18 @@ div.fot{background-color:black;z-index:10;color:white;padding-left:350px;padding
   form{padding:15px;}
   #msgSubmit{width:200px;font-size:1.0em;padding:7px;background-color:#208BB2;border-radius:5px;margin:0px 0px 0px 30px;border:0px;}
   .dbody{padding-bottom:30px;}
-  div.doctor{width:910px;height:100px; padding:15px;background-color:#506E76;margin:10px 25px 10px 25px;overflow:hidden;float:left;}
+  div.doctor{width:910px;height:100px; padding:15px;background-color:#D6E4D4;margin:10px 25px 10px 25px;overflow:hidden;float:left;}
+ 
+ div.doctor2{width:910px;height:auto; padding:15px;overflow:hidden;float:left;}
  div.doctor a{text-decoration:none;color:black;}
- .doctor p{margin-top:-10px;}
+ 
+ .doctor p,.doctor1 p{margin-top:-10px; padding:20px;font-family: 'Arapey';
+  font-style: italic;font-size:1.4em;
+  font-weight: 300;}
+  .doctor h3{margin:-15px 0px 0px -20px;padding:5px;background-color:#526C4E;border-radius:3px;width:920px; padding:7px 7px 7px 30px;}
+ .doctor1 h3{padding:5px;background-color:#526C4E;border-radius:3px;width:900px; padding:7px 7px 7px 20px;}
  .selPatients{background-color:#208BB2; padding:10px;width:auto;height:40px;margin:10px;}
   .patient input,.selPatients input {float:left;margin:13px 1px 13px 1px;}
-  .read{
- color:red;}
+  .read {
+ color:black;padding:.5px;background-color:#BDC7D6;}
 
