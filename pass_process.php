@@ -1,4 +1,4 @@
-<?php require("connection.php");
+<?php require("includes/connection.php");
 if(isset($_POST['pass1']) && isset($_POST['pass2']))
 {
 			if($_POST['pass1'] == $_POST['pass2']){

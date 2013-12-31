@@ -1,5 +1,5 @@
 <?php
-require_once("global.php");
+require_once("includes/global.php");
 require("includes/functions.php");
 if(isset($_GET['u']) && $_GET['q']){
 $salt = "PiuwrO1#O0rl@+luH1!froe*l?8oEb!iu)_1Xaspi*(sw(^&.laBr~u3i!c?es-l651";

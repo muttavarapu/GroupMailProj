@@ -1,4 +1,4 @@
-<?php require_once("global.php");
+<?php require_once("includes/global.php");
 require("includes/functions.php");
 if($loggedin ==1){redirect_to('home.php');}
 else{

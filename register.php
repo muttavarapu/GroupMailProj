@@ -1,5 +1,5 @@
 <?php 
-require_once("global.php");
+require_once("includes/global.php");
 require("includes/functions.php");
 if($loggedin ==1){redirect_to('home.php?msg=<p class="suces">you are already loggedin!</p>');}
 if(isset($_POST['username'])){ 

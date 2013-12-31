@@ -1,4 +1,4 @@
-<?php require_once("global.php");
+<?php require_once("includes/global.php");
 require("includes/functions.php");
 
 if(isset($_GET['msg'])){$message=$_GET['msg'];}else{$message="";}

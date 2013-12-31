@@ -1,4 +1,4 @@
-<?php require_once("global.php");require("includes/functions.php");
+<?php require_once("includes/global.php");require("includes/functions.php");
 if($loggedin==0){$msg="Login to continue!";
 $goto ='login.php?msg='.$msg;
 redirect_to($goto);} 
