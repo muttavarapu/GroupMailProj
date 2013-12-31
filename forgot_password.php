@@ -10,7 +10,12 @@ if (isset($_POST["Forgot"]))
     $email = mysql_real_escape_string($_POST["email"]);
 	 
     // Check to see if a user exists with this e-mail
-	    $userExists = mysql_fetch_assoc(mysql_query("SELECT `email`,'firstname' FROM doctors WHERE `email` = '$email'"));
+	$query ="SELECT `email`,'firstname' FROM doctors WHERE `email` = '$email'";
+	$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+ if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+	    $userExists = $result->fetch_array();
 	    if ($userExists["email"])
 					{
 								// Create a unique salt. This should never leave PHP unencrypted.
@@ -107,7 +112,8 @@ include('includes/head.php');
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

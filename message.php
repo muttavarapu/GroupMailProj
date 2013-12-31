@@ -94,7 +94,8 @@ echo "<h3 class='warning'>you haven't selected any patients!</h3><h3><a href='pa
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

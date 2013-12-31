@@ -19,8 +19,12 @@ $message="Failed to update details ! You need to enter both firstname and lastna
 
 else{
 
-$query=mysql_query("UPDATE `doctors` SET `firstname`='$fname',`lastname`='$lname',`about`='$about' WHERE username='$session_username'")or die("failed to enter data".mysql_error());
-$message="<p class='sucess'> Yay! You have Updated your profile Sucessfully.</p>";
+$query="UPDATE `doctors` SET `firstname`='$fname',`lastname`='$lname',`about`='$about' WHERE username='$session_username'";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+ if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+$message="Yay! You have Updated your profile Sucessfully";
 $goto ='profile.php?msg='.$message;
 redirect_to($goto);
 }
@@ -31,12 +35,18 @@ redirect_to($goto);
 
 if($session_id){
 
-$query=mysql_query("SELECT * FROM doctors WHERE id='$session_id' LIMIT 1") or die("Could not check the session");}else{redirect_to('login.php?msg="error please login again!"');}
+$query="SELECT * FROM doctors WHERE id='$session_id' LIMIT 1";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+$row=$result->fetch_array();
+ if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+}else{redirect_to('login.php?msg="error please login again!"');}
 include('includes/head.php');
 ?>
 <div class="clear"></div>
 <div class="content">
-<?php $row=mysql_fetch_array($query);
+<?php 
 echo "<h1 id='dhead'>Hello Dr.".ucfirst($row[2])."! | Update your info</h1><hr/>";?>
 <div class="dbody">
 <?php 
@@ -52,7 +62,9 @@ echo '<form action="edit_profile.php" method="post">About me  :   <br/><textarea
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+
+$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

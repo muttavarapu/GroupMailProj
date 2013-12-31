@@ -5,11 +5,17 @@ redirect_to($goto);}
 if(isset($_GET['msg'])){$msg[]=$_GET['msg'];}
 if($session_id){
 
-$query=mysql_query("SELECT id,subject, LEFT(message, 145) AS body,sent_on,recipients FROM messages WHERE d_id='$session_id'") or die("Could not check the session".mysql_error());}
+$query="SELECT id,subject, LEFT(message, 145) AS body,sent_on,recipients FROM messages WHERE d_id='$session_id'";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+ 
+}
 else{redirect_to('login.php?msg="error please login again!"');}
 
-if(mysql_num_rows($query)>0){$output="";
-while($row=mysql_fetch_array($query)){
+if(mysqli_num_rows($result)>0){$output="";
+while($row=$result->fetch_array()){
 $readmore=$row['body'];
 $lastspace=strrpos($readmore," ");
 $read=substr($readmore,0,$lastspace);
@@ -36,7 +42,8 @@ echo $output;
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

@@ -17,9 +17,13 @@ $recipients=$_POST['check_list'];
 //we need to get the doctors mail from doctors database
 
 
-$query=mysql_query("SELECT email, firstname, lastname  FROM doctors WHERE id={$session_id}") or die("could not connect to database".mysql_error());
+$query="SELECT email, firstname, lastname  FROM doctors WHERE id={$session_id}";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
 
-while($row=mysql_fetch_array($query)){$replyto=$row[0];
+while($row=$result->fetch_array()){$replyto=$row[0];
 $doc_name= "Dr. ".$row[1]." ".$row[2];}
 
 		/*    using Swift mailer to send mail
@@ -116,9 +120,16 @@ if(count($sucessRecipients) > 0)
 					$insert=mysql_real_escape_string($insert);
 
 					$ip_address=$_SERVER['REMOTE_ADDR'];
-					$query=mysql_query("INSERT INTO messages(d_id,message,recipients,sent_on,ip_address,subject) VALUES('$session_id','$message_body','$insert',now(),'$ip_address','$subj')")or die("failed to enter data".mysql_error());
+					
+					
+					$query="INSERT INTO messages(d_id,message,recipients,sent_on,ip_address,subject) VALUES('$session_id','$message_body','$insert',now(),'$ip_address','$subj')";
 					//catch insert id to display sent message 
-					$msg_id=mysql_insert_id();
+					$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+					
+					if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+					$msg_id=$connection->insert_id;
 					$msg[]="<p class='sucess'>Message Sucessfully sent to ".$count." Recipients!</p>";
 
 					}
@@ -164,7 +175,16 @@ else{
 $goto ='messages.php?msg=click on a message to view';
 redirect_to($goto);
 }
-$query=mysql_query("SELECT id,subject,message AS body,sent_on,recipients FROM messages WHERE d_id='$session_id' AND id='$id' LIMIT 1") or die("Could not check the session".mysql_error());
+$query="SELECT id,subject,message AS body,sent_on,recipients FROM messages WHERE d_id='$session_id' AND id='$id' LIMIT 1";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+$output="<p class='error'>Cannot load Requested Message</p>";
+while($row=$result->fetch_array()){
+
+$output= "<div class='msg'><h2 class='subj'>".$row['subject']."</h2><h2 class='date'>".$row['sent_on']."</h2><div class='clear'></div><p class='msgBody'>".$row['body']."</p><br/><p>Recipents: ".$row['recipients']."</p></div>";
+}
 }
 else{redirect_to('login.php?msg="Could not check your data <br/>error please login again!"');}
 
@@ -182,10 +202,7 @@ include('includes/head.php');
 <h1 id="dhead">View Message</h1><hr/>
 <div class="dbody">
 <?php if(!empty($msg)){foreach($msg as $msg){echo $msg."<br/>";}}
-while($row=mysql_fetch_array($query)){
-
-echo "<div class='msg'><h2 class='subj'>".$row['subject']."</h2><h2 class='date'>".$row['sent_on']."</h2><div class='clear'></div><p class='msgBody'>".$row['body']."</p><br/><p>Recipents: ".$row['recipients']."</p></div>";
-}
+echo $output;
 
 ?>
 </div>
@@ -193,7 +210,7 @@ echo "<div class='msg'><h2 class='subj'>".$row['subject']."</h2><h2 class='date'
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

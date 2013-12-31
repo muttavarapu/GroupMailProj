@@ -14,8 +14,12 @@ $out= "Now you can reset password for ".$_GET['u'].'<br>
 }
 else{$out= "Wrong verification!.Request reset link to your email address again";}
 
-}elseif($loggedin==1){
-$userEmail = mysql_fetch_assoc(mysql_query("SELECT `email` FROM doctors WHERE `id` = '$session_id'"));
+}elseif($loggedin==1){$query="SELECT `email` FROM doctors WHERE `id` = '$session_id'";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+ if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+$userEmail = $result->fetch_array();
 $out= "Now you can reset password for ".$userEmail['email'].'<br>
 <form action="pass_process.php" method="POST">
 <input type="text" name="email" value="'.$userEmail['email'].'" size=25 READONLY /><br><input type="password" name="pass1" size=25 placeholder="Password"/></br>
@@ -27,7 +31,10 @@ else{echo "<h1>Hey you!</h1> <br/>Why are you are sneaking here without authenti
 <html>
 <head><title>Reset Password</title>
 </head><body>
-<?php if(!empty($out)){echo $out;} ?>
-</body>
+<?php if(!empty($out)){echo $out;} 
 
+?>
+</body>
+<?php include('includes/foter.php');
+$connection->close();?>
 </html>

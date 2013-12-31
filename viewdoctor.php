@@ -7,9 +7,16 @@ redirect_to($goto);
 }
 if($loggedin ==1){redirect_to('home.php');}
 include('includes/head.php');
-$query=mysql_query("SELECT id, firstname, lastname, about FROM doctors where id='$id' LIMIT 1") or die("Failed to connect to database".mysql_error());
+$query="SELECT id, firstname, lastname, about FROM doctors where id='$id' LIMIT 1";
+
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
 $out="";
-	while($person =mysql_fetch_array($query)){
+
+
+	while($person =$result->fetch_array()){
 		$out.= "<div class='doctor1'><div class='clear'></div><h3 class='left'> Dr. ".$person['firstname'].$person['lastname']."</h3><div class='clear'></div><p class='left'>".$person['about']."</p></div>";
 	
 	}
@@ -29,4 +36,6 @@ $out="";
 
 
 
-</body></html>
+</body>
+<?php include('includes/foter.php');
+$connection->close();?></html>

@@ -11,20 +11,27 @@ if(isset($_POST['email'])){
 	else{
 				$email=mysql_real_escape_string($email);
 			$pass=sha1($pass);
-			$query=mysql_query("SELECT * FROM doctors WHERE (email='$email' OR username='$email') AND password='$pass' LIMIT 1") or die("could not find the member");
-			$count_query=mysql_num_rows($query);
+			$query="SELECT * FROM doctors WHERE (email='$email' OR username='$email') AND password='$pass' LIMIT 1";
+			
+			if (!$result = $connection->query($query)) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+			$count_query=mysqli_num_rows($result);
 			if($count_query==0){$message="The information you entered was incorrect";}
 			else{
 					$_SESSION['pass']=$pass;
-					while($row=mysql_fetch_array($query)){$username=$row['username'];
+					while($row=$result->fetch_array()){$username=$row['username'];
 					$id=$row['id'];}
 					$_SESSION['username']=$username;
 					$_SESSION['id']=$id;
 					if($remember=="yes"){setcookie("id_cookie",$id,time()+60*60*24*100,"/");
 					setcookie("username_cookie",$username,time()+60*60*24*100,"/");
 					setcookie("pass_cookie",$pass,time()+60*60*24*100,"/");}
-					$query=mysql_query("UPDATE doctors SET `lastlogged`=NOW() WHERE username='$username'")or die("failed to enter data".mysql_error());
-					redirect_to("home.php");
+					$query="UPDATE doctors SET `lastlogged`=NOW() WHERE username='$username'";
+					$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+					if($result){redirect_to("home.php");
+					echo "what the fuck";}
 
 			}
 	}
@@ -45,7 +52,7 @@ include('includes/head.php');
 <input type="password" name="pass" placeholder="Password"/></br>
 <input type="checkbox" name="remember" value="yes" checked="checked" placeholder="remember"/>Remember</br>
 <input type="submit" value="Login!"/>
-<a href="">Forgot Password</a>
+<a href="forgot_password.php">Forgot Password</a>
 
 </form>
 </div>
@@ -55,4 +62,5 @@ include('includes/head.php');
 
 <?php include('includes/foter.php');?>
 
-</body></html><?php mysql_close($connection);?>
+</body></html><?php
+$connection->close();?>

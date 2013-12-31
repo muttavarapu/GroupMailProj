@@ -3,9 +3,17 @@ require("includes/functions.php");
 
 if($loggedin ==1){redirect_to('home.php');}
 include('includes/head.php');
-$query=mysql_query("SELECT id, firstname, lastname, LEFT(about, 160) as aboutme  FROM doctors") or die("Failed to connect to database".mysql_error());
+$query="SELECT id, firstname, lastname, LEFT(about, 160) as aboutme  FROM doctors ";
+
 $out="";
-	while($person =mysql_fetch_array($query)){
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
+ if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+
+        
+	while($person =$result->fetch_array()){
+	
 	$readmore=$person['aboutme'];
 $lastspace=strrpos($readmore," ");
 $read=substr($readmore,0,$lastspace);
@@ -27,5 +35,6 @@ $read=substr($readmore,0,$lastspace);
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+$connection->close();?>
 </body></html>

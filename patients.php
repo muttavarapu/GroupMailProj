@@ -33,9 +33,15 @@ else{
 
 if($session_id){
 
-$query=mysql_query("SELECT * FROM doctors WHERE id='$session_id' LIMIT 1") or die("Could not check the session");}else{redirect_to('login.php?msg="error please login again!"');}
+$query="SELECT * FROM doctors WHERE id='$session_id' LIMIT 1";
+$result = $connection->query($query) or trigger_error($mysqli->error." [$query]");
+if (!$result) {
+    die ('There was an error running query[' . $connection->error . ']');
+}
+}
+else{redirect_to('login.php?msg="error please login again!"');}
 include('includes/head.php');
-?><?php $row=mysql_fetch_array($query);
+?><?php $row=$result->fetch_array();
 ?>
 <div class="clear"></div>
 <div class="content">
@@ -48,7 +54,8 @@ include('includes/head.php');
 
 
 
-<?php include('includes/foter.php');?>
+<?php include('includes/foter.php');
+$connection->close();?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html>

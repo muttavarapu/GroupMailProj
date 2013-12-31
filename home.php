@@ -6,8 +6,7 @@ if(isset($_GET['msg'])){$msg=$_GET['msg'];}
 <?php include('includes/head.php');
 if($session_id){
 
-$query=mysql_query("SELECT * FROM doctors WHERE id='$session_id' LIMIT 1") or die("Could not check the session");}else{redirect_to('login.php?msg="error please login again!"');}
-?><?php $row=mysql_fetch_array($query);
+}else{redirect_to('login.php?msg="error please login again!"');}
 ?>
 <div class="clear"></div>
 <div class="content">
@@ -23,4 +22,4 @@ $query=mysql_query("SELECT * FROM doctors WHERE id='$session_id' LIMIT 1") or di
 <?php include('includes/foter.php');?>
 
 
-</body></html><?php mysql_close($connection);?>
+</body></html><?php $connection->close();?>
