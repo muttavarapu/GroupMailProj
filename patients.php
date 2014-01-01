@@ -4,7 +4,7 @@ exit();}?><?php
 
 
 
-
+ini_set("error_reporting","E_ALL");
  //grab the patient data from api
  //$json = file_get_contents('http://localhost/Practo/patients.js');
  $json = file_get_contents('https://patients.apiary.io/patients');
