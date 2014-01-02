@@ -141,7 +141,7 @@ xmlhttp.send();
 }</script>
 <div class="clear"></div>
 <div class="content">
-<h1 id='dhead'>Register to Tutoscoop  |  The free tutorial place Just a Click away!</h1><hr><div class="dbody">
+<h1 id='dhead'>Register to Practo  |  All your Patients Just a Click away!</h1><hr><div class="dbody">
 <?php if(!empty($message)){foreach($message as $msg){echo "<p class='error'>".$msg."</p>";}}?>
 </hr><form action="register.php" method="post" name="register" onsubmit="return validateForm()" >
 <input type="text" name="username" onkeyup="usercheck(this.value)" size=15 maxlength=15 <?php if(!empty($username)){echo 'value="'.$username.'"';}?> placeholder="Username"/><span id="write"></span></br>

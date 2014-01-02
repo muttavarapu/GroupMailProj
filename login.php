@@ -45,7 +45,7 @@ include('includes/head.php');
 
 <div class="clear"></div>
 <div class="content">
-<h1 id='dhead'>Register to Tutoscoop  |  The free tutorial place Just a Click away!</h1><hr/><div class="dbody">
+<h1 id='dhead'>Register to Practo |  All your patients Just a Click away!</h1><hr/><div class="dbody">
 <?php if(!empty($message)){echo "<p>".$message."</p>";}?>
 </hr><form action="login.php" method="post">
 <input type="text" name="email" placeholder="Email Address"/></br>
