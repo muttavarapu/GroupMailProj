@@ -13,7 +13,7 @@ $query="SELECT * FROM doctors WHERE username='$uname' LIMIT 1";
 					
 $result = $connection->query($query) or trigger_error($mysqli->error." [$query]"); 
 			$check=mysqli_num_rows($result);
-if($check==0){ //if user has already voted we just return the current number of votes
+if($check==0){ //if user hasn't already registered we just return the current number of votes
   
   $response="Available";
 }elseif($check !=0){
